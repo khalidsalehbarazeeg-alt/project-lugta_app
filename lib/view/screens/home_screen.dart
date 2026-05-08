@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luqta_app/view/screens/profile_screen.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../logic/controllers/add_product_controller.dart';
 import 'add_product_screen.dart';
@@ -100,7 +101,10 @@ class HomeScreen extends StatelessWidget {
                   Get.to(() => const FavoritesScreen());
                 }),
 
-                _buildBottomAction(Icons.person_outline, "الملف الشخصي", false, () {}),
+                // داخل الـ Row في BottomAppBar
+                _buildBottomAction(Icons.person_outline, "الملف الشخصي", false, () {
+                  Get.to(() => const ProfileScreen()); // يفتح شاشة الملف الشخصي الجديدة
+                }),
               ],
             ),
           ),
