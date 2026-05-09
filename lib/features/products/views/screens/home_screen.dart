@@ -148,8 +148,8 @@ class HomeScreen extends StatelessWidget {
       })).toList(),
     ),
   );
-
-  // 3. ودجت بناء أزرار الشريط السفلي
+   //
+  // . ودجت بناء أزرار الشريط السفلي
   Widget _buildBottomAction(IconData icon, String label, bool isSelected, VoidCallback onTap) {
     return InkWell(
       onTap: onTap,
