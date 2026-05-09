@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../core/constants/app_colors.dart';
-import '../../../logic/controllers/add_product_controller.dart';
+import '../../../../../core/constants/app_colors.dart';
+import '../../controllers/add_product_controller.dart';
 
 class AddProductScreen extends StatelessWidget {
   const AddProductScreen({super.key});

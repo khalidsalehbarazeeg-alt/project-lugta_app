@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../core/constants/app_colors.dart';
+import '../../../../../core/constants/app_colors.dart';
 import 'change_password_screen.dart';
 import 'edit_profile_screen.dart';
-import 'login_screen.dart'; // افترضنا وجود شاشة تسجيل الدخول
+import '../../../auth/views/screens/login_screen.dart'; // افترضنا وجود شاشة تسجيل الدخول
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

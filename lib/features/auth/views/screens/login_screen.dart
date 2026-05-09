@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // 1. استيراد الواجهات الجديدة للتنقل
+import '../../../../core/widgets/custom_button.dart';
 import 'verify_email_screen.dart';
-import '../../core/constants/app_colors.dart';
-import '../../core/constants/app_strings.dart';
-import '../widgets/custom_button.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_strings.dart';
+
 
 class LoginScreen extends StatelessWidget {
   final RxBool isPasswordHidden = true.obs;

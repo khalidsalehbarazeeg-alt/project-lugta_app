@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../logic/controllers/add_product_controller.dart';
+import '../../controllers/add_product_controller.dart';
 import 'product_details_screen.dart';
 
 class FavoritesScreen extends StatelessWidget {

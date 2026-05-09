@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../widgets/registration_stepper.dart';
 import 'complete_profile_screen.dart';
-import '../../core/constants/app_colors.dart';
-import '../../core/constants/app_strings.dart';
-import '../widgets/custom_button.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_strings.dart';
+
+
+import '../../../../core/widgets/custom_button.dart';
+import '../widgets/registration_stepper.dart';
 
 class OtpScreen extends StatelessWidget {
   @override

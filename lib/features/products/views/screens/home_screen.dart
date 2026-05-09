@@ -1,19 +1,19 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:luqta_app/view/screens/profile_screen.dart';
-import '../../../core/constants/app_colors.dart';
-import '../../../logic/controllers/add_product_controller.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../profile/views/screens/profile_screen.dart';
+import '../../controllers/add_product_controller.dart';
+import '../widgets/product_card.dart'; // استيراد الكرت الجديد
 import 'add_product_screen.dart';
 import 'product_details_screen.dart';
-import 'favorites_screen.dart'; // تأكد من استيراد شاشة المفضلات
+import 'favorites_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // استدعاء الكنترولر
     final controller = Get.put(AddProductController());
 
     return Directionality(
@@ -36,15 +36,9 @@ class HomeScreen extends StatelessWidget {
         ),
         body: Column(
           children: [
-            // 1. حقل البحث
-            _buildSearchField(),
-
-            // 2. قائمة التصنيفات
-            _buildCategoryList(controller),
-
+            _buildSearchField(), // استدعاء دالة البحث
+            _buildCategoryList(controller), // استدعاء قائمة التصنيفات
             const SizedBox(height: 10),
-
-            // 3. عرض المنتجات
             Expanded(
               child: Obx(() {
                 final list = controller.allProducts
@@ -64,25 +58,21 @@ class HomeScreen extends StatelessWidget {
                     childAspectRatio: 0.8,
                   ),
                   itemCount: list.length,
-                  itemBuilder: (context, i) => GestureDetector(
+                  itemBuilder: (context, i) => ProductCard(
+                    product: list[i],
                     onTap: () => Get.to(() => ProductDetailsScreen(product: list[i])),
-                    child: _buildProductCard(list[i]),
                   ),
                 );
               }),
             ),
           ],
         ),
-
-        // الزر العائم للإضافة
         floatingActionButton: FloatingActionButton(
           backgroundColor: AppColors.primaryOrange,
           child: const Icon(Icons.add, color: Colors.white, size: 30),
           onPressed: () => Get.to(() => const AddProductScreen()),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-
-        // الشريط السفلي (Bottom Navigation)
         bottomNavigationBar: BottomAppBar(
           shape: const CircularNotchedRectangle(),
           notchMargin: 8,
@@ -93,17 +83,12 @@ class HomeScreen extends StatelessWidget {
               children: [
                 _buildBottomAction(Icons.home, "الرئيسية", true, () {}),
                 _buildBottomAction(Icons.list_alt, "الإعلانات", false, () {}),
-
-                const SizedBox(width: 40), // مساحة للزر العائم الوسطي
-
-                // زر المفضلة التفاعلي
+                const SizedBox(width: 40),
                 _buildBottomAction(Icons.favorite_border, "المفضلة", false, () {
                   Get.to(() => const FavoritesScreen());
                 }),
-
-                // داخل الـ Row في BottomAppBar
                 _buildBottomAction(Icons.person_outline, "الملف الشخصي", false, () {
-                  Get.to(() => const ProfileScreen()); // يفتح شاشة الملف الشخصي الجديدة
+                  Get.to(() => const ProfileScreen());
                 }),
               ],
             ),
@@ -113,7 +98,9 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  // ودجت البحث
+  // --- الدوال المساعدة (Helper Methods) ---
+
+  // 1. ودجت البحث
   Widget _buildSearchField() => Padding(
     padding: const EdgeInsets.all(15),
     child: TextField(
@@ -122,12 +109,15 @@ class HomeScreen extends StatelessWidget {
         prefixIcon: const Icon(Icons.search, color: Colors.grey),
         filled: true,
         fillColor: Colors.grey[100],
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(15), borderSide: BorderSide.none),
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide.none
+        ),
       ),
     ),
   );
 
-  // ودجت قائمة التصنيفات
+  // 2. ودجت قائمة التصنيفات
   Widget _buildCategoryList(AddProductController controller) => SizedBox(
     height: 45,
     child: ListView(
@@ -147,7 +137,10 @@ class HomeScreen extends StatelessWidget {
             child: Center(
               child: Text(
                 cat,
-                style: TextStyle(color: isSelected ? Colors.white : Colors.black, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: isSelected ? Colors.white : Colors.black,
+                    fontWeight: FontWeight.bold
+                ),
               ),
             ),
           ),
@@ -156,41 +149,7 @@ class HomeScreen extends StatelessWidget {
     ),
   );
 
-  // ودجت كرت المنتج
-  Widget _buildProductCard(product) => Container(
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(20),
-      boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10)],
-    ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          child: ClipRRect(
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(20), bottom: Radius.circular(20)),
-            child: Image.file(File(product.posterImage), fit: BoxFit.cover, width: double.infinity),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(product.title, style: const TextStyle(fontWeight: FontWeight.bold), maxLines: 1, overflow: TextOverflow.ellipsis),
-              const SizedBox(height: 4),
-              Text(
-                "${product.price} ${product.currency}",
-                style: TextStyle(color: AppColors.primaryOrange, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
-
-  // ودجت بناء أزرار الشريط السفلي
+  // 3. ودجت بناء أزرار الشريط السفلي
   Widget _buildBottomAction(IconData icon, String label, bool isSelected, VoidCallback onTap) {
     return InkWell(
       onTap: onTap,

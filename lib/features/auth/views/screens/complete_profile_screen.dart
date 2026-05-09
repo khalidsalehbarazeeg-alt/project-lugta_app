@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../logic/controllers/register_controller.dart';
-import '../../core/constants/app_colors.dart';
-import '../../core/constants/app_strings.dart';
-import '../widgets/custom_button.dart';
+
+import '../../controllers/register_controller.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_strings.dart';
+import '../../../../core/widgets/custom_button.dart';
 import '../widgets/registration_stepper.dart';
 
 class CompleteProfileScreen extends StatelessWidget {

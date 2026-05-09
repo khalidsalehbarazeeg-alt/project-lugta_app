@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'view/screens/login_screen.dart';
-import 'view/screens/home_screen.dart';
+import 'features/auth/views/screens/login_screen.dart';
+import 'features/products/views/screens/home_screen.dart';
 // تأكد من استيراد الملفات الجديدة هنا (غير المسارات حسب مجلداتك)
-import 'view/screens/product_details_screen.dart';
-import 'view/screens/add_product_screen.dart';
+import 'features/products/views/screens/product_details_screen.dart';
+import 'features/products/views/screens/add_product_screen.dart';
 import 'core/constants/app_strings.dart';
 
 void main() {

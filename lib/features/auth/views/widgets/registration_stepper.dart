@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_colors.dart';
 
 class RegistrationStepper extends StatelessWidget {
   final int currentStep; // الخطوة الحالية: 1 أو 2 أو 3

@@ -4,8 +4,8 @@ import 'package:image_cropper/image_cropper.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../data/models/product_model.dart';
-import '../../core/constants/app_colors.dart';
+import '../models/product_model.dart';
+import '../../../core/constants/app_colors.dart';
 
 class AddProductController extends GetxController {
   final ImagePicker _picker = ImagePicker();

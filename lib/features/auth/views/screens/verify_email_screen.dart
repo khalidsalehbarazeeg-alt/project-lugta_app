@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../widgets/registration_stepper.dart';
 import 'otp_screen.dart'; // سننشئها لاحقاً
-import '../../core/constants/app_colors.dart';
-import '../../core/constants/app_strings.dart';
-import '../widgets/custom_button.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_strings.dart';
+
+
+import '../../../../core/widgets/custom_button.dart';
+import '../widgets/registration_stepper.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
   @override

@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../core/constants/app_colors.dart';
-import '../../../data/models/product_model.dart';
-import '../../../logic/controllers/add_product_controller.dart';
+import '../../../../../core/constants/app_colors.dart';
+import '../../models/product_model.dart';
+import '../../controllers/add_product_controller.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   final ProductModel product;
